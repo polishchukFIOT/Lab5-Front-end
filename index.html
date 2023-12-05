@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Лаб 5. Поліщук Д.О ІС-13</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<div>
+<form id="myForm">
+    <label for="fullName">ПІБ</label>
+    <input type="text" id="fullName" name="fullName" required
+        pattern="^[А-ЩЬЮЯЇІЄҐ][а-щьюяїієґ]+\s[А-ЩЬЮЯЇІЄҐ]\.[А-ЩЬЮЯЇІЄҐ]\.$">
+
+    <br>
+
+    <label for="phone">Телефон</label>
+    <input type="tel" id="phone" name="phone" required pattern="^\(\d{3}\)-\d{3}-\d{2}-\d{2}$">
+
+    <br>
+
+    <label for="idCard">ID-card</label>
+    <input type="text" id="idCard" name="idCard" required pattern="^[А-ЩЬЮЯЇІЄҐ][а-щьюяїієґ]+\s№\d{6}$">
+
+    <br>
+
+    <label for="faculty">Факультет</label>
+    <input type="text" id="faculty" name="faculty" required pattern="^[А-ЩЬЮЯЇІЄҐ][а-щьюяїієґ]+$">
+
+    <br>
+
+    <label for="dob">Дата народження</label>
+    <input type="text" id="dob" name="dob" required pattern="^\d{2}\.\d{2}\.\d{4}$">
+
+    <br>
+
+    <button type="button" onclick="validateForm()">Підтвердити</button>
+</form>
+    <script src="script.js"></script>
+</div>
+<div class="danni">
+    <h1>Введені дані</h1>
+    <h3>ПІБ: Поліщук Д.О</h3>
+    <h3>Телефон: (068)-888-99-66</h3>
+    <h3>ІД-карта: ЮА №123423</h3>
+    <h3>Факультет: ФІОТ</h3>
+    <h3>Дата народження: 13.01.2004</h3>
+    
+</div>
+<div>
+<table id="colorTable"></table>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const table = document.getElementById('colorTable');
+        const palette = ['red', 'blue', 'green', 'yellow', 'purple', 'orange'];
+
+        for (let i = 1; i <= 6; i++) {
+            const row = table.insertRow();
+            for (let j = 1; j <= 6; j++) {
+                const cell = row.insertCell();
+                cell.textContent = (i - 1) * 6 + j;
+
+                cell.addEventListener('mouseover', function () {
+                    if (cell.textContent == 18) {
+                        cell.style.backgroundColor = getRandomColor();
+                    }
+                });
+
+                cell.addEventListener('click', function () {
+                    const color = prompt('Enter color:');
+                    cell.style.backgroundColor = color;
+                });
+
+                cell.addEventListener('dblclick', function () {
+                    const columnIndex = cell.cellIndex;
+                    const rows = table.rows;
+
+                    for (let k = 0; k < rows.length; k++) {
+                        const rowCells = rows[k].cells;
+                        if (rowCells[columnIndex]) {
+                            rowCells[columnIndex].style.backgroundColor = getRandomColorFromPalette();
+                        }
+                        columnIndex += 2; 
+                    }
+                });
+            }
+        }
+
+        function getRandomColorFromPalette() {
+            const randomIndex = Math.floor(Math.random() * palette.length);
+            return palette[randomIndex];
+        }
+
+        function getRandomColor() {
+            return '#' + Math.floor(Math.random() * 16777215).toString(16);
+        }
+    });
+</script>
+
+</body>
+
+</html

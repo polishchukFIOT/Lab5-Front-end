@@ -1,0 +1,34 @@
+ 
+ body{
+    display: flex;
+ }
+ 
+ #myForm{
+    font-size: 30px;
+    margin-right: 50px;
+    padding-top: 25px;
+ }
+ .error {
+     background-color: #ffdddd;
+ }
+.danni{
+    margin-right: 50px;
+}
+   table {
+       border-collapse: collapse;
+       width: 100%;
+   }
+
+   table,
+   th,
+   td {
+       border: 1px solid black;
+       width: 500px;
+   }
+
+   th,
+   td {
+       padding: 15px;
+       text-align: center;
+       cursor: pointer;
+   }
